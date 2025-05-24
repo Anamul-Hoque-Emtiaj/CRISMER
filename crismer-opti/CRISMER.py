@@ -12,25 +12,29 @@ import torch
 __version__ = 'v1.0'
 pwd = os.path.dirname(os.path.realpath(__file__))
 
-model_path = os.path.join(pwd, 'models/aot_idt.pth')
+model_path = os.path.join(pwd, 'models/change_site_circleseq_model.pth')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = torch.load(model_path, map_location=device)
+config =config = {
+    'num_layers': 2, 
+    'num_heads': 4, 
+    'number_hidder_layers': 2, 
+    'dropout_prob': 0.2, 
+    'batch_size': 128, 
+    'epochs': 50, 
+    'learning_rate': 0.001, 
+    'pos_weight': 30, 
+    'attn': False,
+    "seq_length":20
+}
+model = CRISPRTransformerModel(config)
+model = model.to(device)
+model.load_state_dict(torch.load(model_path,weights_only=True))
 
 GENOME = os.path.join(pwd, 'data/hg38.fa')
 
 
-
-
-# THREE ...
-bins = [0, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 1.01]
-
-
-weights = [6.24267165e-05, 1.91065417e-04, 7.82003295e-04, 4.90783755e-03,
- 1.34371841e-02, 3.42200726e-02, 9.57279438e-02, 2.28478964e-01,
- 4.01403957e-01, 6.48571429e-01, 9.18032787e-01, 1.00000000e+00]
-
-
-
+with open(os.path.join(pwd, 'models/bin_weights.pkl'), 'rb') as f:
+    bins, weights = pickle.load(f)
     
 scaler_instance = joblib.load("models/minmax_scaler.pkl")
 
@@ -102,7 +106,7 @@ def get_parser():
         help="Mismatch tolerance (default: 6)")
     other_option.add_argument('--dev', metavar="<device>", type=str, default='G', 
         help="GPU/CPU device setting, the same as in the CasOffinder (default: G)")
-    other_option.add_argument('--threshold', metavar="<float>", type=float, default=0.8, 
+    other_option.add_argument('--threshold', metavar="<float>", type=float, default=0.77, 
         help="The CRISMER-Score threshold for mutated sgRNAs. (default: 0.77)")
 
     parser.add_argument('--version', action='version', version='CRISMER {}'.format(__version__))

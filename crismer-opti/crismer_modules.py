@@ -161,8 +161,10 @@ class CRISMER:
             nt = opti_nt.loc[i, 'nt']
             if target[pos - 1] != nt:
                 new_sgrna = target[:pos - 1] + nt + target[pos:]
-                if self.single_score_(new_sgrna, target) > 0.5:
-                
+                single_score = self.single_score_(new_sgrna, target)
+                # print('CRISMER-Score of {}: {}'.format(new_sgrna, single_score))
+                # print('opti_threshold: {}'.format(self.opti_th))
+                if single_score >= self.opti_th:
                     spec, out_df = self.CasoffinderSpec_(new_sgrna, target, out_df=True, offtar_search=offtar_search, mm=mm, dev=dev)
                     cnt_results = self.score_bin_(out_df.loc[:, 'CRISMER-Score'].values[1:])[-5:]
 
