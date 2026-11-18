@@ -1,6 +1,13 @@
 # CRISMER
 
-**CRISMER**: A transformer-based Interpretable Deep Learning Approach for Genome-wide CRISPR Cas-9 Off-Target Prediction and Optimization.
+CRISMER is an interpretable model for genome-wide CRISPR-Cas9 off-target prediction with k-mer feature extraction.
+
+[bioRxiv preprint](https://doi.org/10.1101/2025.05.03.652008) · [Paper page and evaluation summary](https://ahemtiaz.github.io/papers/crismer/) · [Citation](#citation)
+
+| Evaluation | Reported result or scope |
+| --- | --- |
+| CRISPR-DIPOFF dataset | F1 **0.728** and PR-AUC **0.818**. |
+| Independent datasets | CIRCLE-seq, GUIDE-seq, SURRO-seq and TTISS. See the [cross-dataset evaluation notebook](test-scenario-2.ipynb). |
 
 ---
 
@@ -47,4 +54,4 @@ For installing dependencies, using the command-line utility for specificity calc
 
 ## Citation
 
-*Citation details will be added here upon publication.*
+Anamul Hoque Emtiaj, Rakibul Hasan Rafi, Muhammad Ali Nayeem, and M. Sohel Rahman. 2025. *CRISMER: A Transformer-based Interpretable Deep Learning Approach for Genome-wide CRISPR-Cas9 Off-Target Prediction and Optimization*. bioRxiv preprint. [DOI](https://doi.org/10.1101/2025.05.03.652008) · [BibTeX](https://ahemtiaz.github.io/papers/crismer/crismer.bib)
