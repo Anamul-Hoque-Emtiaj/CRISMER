@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use CRISMER, please cite the following preprint."
+title: CRISMER
+type: software
+authors:
+  - name: CRISMER contributors
+repository-code: "https://github.com/Anamul-Hoque-Emtiaj/CRISMER"
+preferred-citation:
+  type: article
+  status: preprint
+  title: "CRISMER: A Transformer-based Interpretable Deep Learning Approach for Genome-wide CRISPR-Cas9 Off-Target Prediction and Optimization"
+  authors:
+    - given-names: Anamul Hoque
+      family-names: Emtiaj
+    - given-names: Rakibul Hasan
+      family-names: Rafi
+    - given-names: Muhammad Ali
+      family-names: Nayeem
+    - given-names: M. Sohel
+      family-names: Rahman
+  journal: bioRxiv
+  year: 2025
+  date-published: "2025-05-08"
+  doi: "10.1101/2025.05.03.652008"
+  url: "https://doi.org/10.1101/2025.05.03.652008"
